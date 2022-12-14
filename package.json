@@ -1,29 +1,29 @@
 {
-  "name": "@ds.e/scss",
+  "name": "@ds.e/core",
   "version": "1.0.0",
   "main": "index.js",
+  "author": "Aniket Kumar <aniketkumar049@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "normalize-scss": "^7.0.1"
-  },
   "devDependencies": {
-    "husky": "^8.0.2",
-    "lint-staged": "^13.1.0",
-    "node-sass": "^8.0.0",
-    "prettier": "^2.8.1",
-    "stylelint": "^14.16.0",
-    "stylelint-config-prettier": "^9.0.4",
-    "stylelint-config-sass-guidelines": "^9.0.1",
-    "stylelint-prettier": "^2.0.0"
+    "lerna": "^6.1.0"
   },
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "playgrounds/*"
+    ],
+    "nohoist": [
+      "**/normalize-scss"
+    ]
+  },
+  "private": true,
   "scripts": {
-    "lint": "stylelint './**/*.scss'",
-    "lint:fix": "yarn lint --fix",
-    "build": "node src/scripts/build.js",
-    "dev": "nodemon --watch src --exec yarn build -e scss",
-    "prepare": "husky install"
-  },
-  "lint-staged": {
-    "*.scss": "yarn lint:fix"
+    "build": "yarn lerna run build",
+    "dev": "yarn lerna run dev",
+    "test": "yarn lerna run test",
+    "publish": "yarn test && yarn build && yarn lerna publish",
+    "commit": "yarn git-cz",
+    "test:chromatic": "yarn lerna run test:chromatic",
+    "build:storybook": "yarn build && yarn lerna run build-storybook"
   }
 }
