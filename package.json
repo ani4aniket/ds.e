@@ -19,12 +19,8 @@
     "lint": "stylelint './**/*.scss'",
     "lint:fix": "yarn lint --fix",
     "build": "node src/scripts/build.js",
-    "dev": "nodemon --watch src --exec yarn build -e scss"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "dev": "nodemon --watch src --exec yarn build -e scss",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.scss": "yarn lint:fix"
