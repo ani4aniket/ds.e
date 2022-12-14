@@ -6,5 +6,10 @@
         "stylelint-config-sass-guidelines",
         "stylelint-config-prettier",
         "stylelint-prettier/recommended"
-    ]
+    ],
+    "rules": {
+        "declaration-property-value-disallowed-list": {
+            "/^border/": []
+        }
+    }
 }
